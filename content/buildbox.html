@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Box</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1><a href="../index.html">🍔</a> Fast Food Deluxe</h1>
+    <nav>
+        <a href="../index.html">Accueil</a>
+        <a href="products.html">Menu</a>
+        <a class="selected" href="buildbox.html">🍱 Build Box</a>
+        <a href="order.html">Commander</a>
+    </nav>
+</header>
+
+<section class="deluxe menu-deluxe buildbox-deluxe">
+    <div class="deluxe-content buildbox-content">
+        <span class="deluxe-badge">Personnalisation</span>
+        <h1>Cree ta box sur mesure</h1>
+        <p>Assemble ton repas ideal et compose une formule complete en quelques clics.</p>
+
+        <div class="deluxe-actions">
+            <a href="products.html" class="btn btn-secondary">Voir le menu</a>
+            <a href="order.html" class="btn btn-outline">Commander</a>
+        </div>
+
+        <div class="box-container">
+
+            <div class="box-section">
+                <h3>🍔 Plat principal</h3>
+                <select id="main" onchange="updatePrice()">
+                    <option value="" disabled selected hidden>Choisir un plat</option>                
+                    <option value="Burger" data-price="800">Burger - 800 DA</option>
+                    <option value="Pizza" data-price="1200">Pizza - 1200 DA</option>
+                    <option value="Tacos" data-price="900">Tacos - 900 DA</option>
+                    <option value="Chapati" data-price="700">Chapati - 700 DA</option>
+                    <option value="Kebab" data-price="900">Kebab - 900 DA</option>
+                    <option value="Iskender" data-price="1500">Iskender - 1500 DA</option>
+                </select>
+            </div>
+
+            <div class="box-section">
+                <h3>🍟 Accompagnement</h3>
+                <select id="side" onchange="updatePrice()">
+                    <option value="" disabled selected hidden>Choisir accompagnement</option>
+                    <option value="Frites" data-price="300">Frites - 300 DA</option>
+                    <option value="Nuggets" data-price="500">Nuggets - 500 DA</option>
+                    <option value="Wings" data-price="600">Wings - 600 DA</option>
+                </select>
+            </div>
+
+            <div class="box-section">
+                <h3>🥤 Boisson</h3>
+                <select id="drink" onchange="updatePrice()">
+                    <option value="" disabled selected hidden>Choisir boisson</option>
+                    <option value="Coca" data-price="200">Coca - 200 DA</option>
+                    <option value="Jus" data-price="300">Jus Nature - 300 DA</option>
+                    <option value="Milkshake" data-price="400">Milkshake - 400 DA</option>
+                </select>
+            </div>
+
+            <div class="box-section">
+                <h3>🍰 Dessert</h3>
+                <select id="dessert" onchange="updatePrice()">
+                    <option value="" disabled selected hidden>Choisir un dessert</option>
+                    <option value="Fondant" data-price="500">Fondant - 500 DA</option>
+                    <option value="Brownie" data-price="450">Brownie - 450 DA</option>
+                    <option value="Tiramisu" data-price="600">Tiramisu - 600 DA</option>
+                </select>
+            </div>
+
+        </div>
+
+        <h3 id="totalPrice">Total : 0 DA</h3>
+
+        <button class="btn buildbox-submit" onclick="createBox()">Créer ma box</button>
+
+        <div id="resultBox"></div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 Fast Food Deluxe - Tous droits reserves</p>
+</footer>
+
+<script src="../javascript/box.js"></script>
+
+</body>
+</html>

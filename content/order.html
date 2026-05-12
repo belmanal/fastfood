@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande - Fast Food Deluxe</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <h1><a href="../index.html">🍔</a> Fast Food Deluxe</h1>
+
+    <nav>
+        <a href="../index.html">Accueil</a>
+        <a href="products.html">Menu</a>
+        <a href="buildbox.html">🍱 Build Box</a>
+        <a class="selected" href="order.html">Commander</a>
+    </nav>
+</header>
+
+<section class="deluxe order-deluxe">
+    <div class="deluxe-content order-content">
+        <span class="deluxe-badge">Commande rapide</span>
+        <h1>Finalise ton panier</h1>
+        <p>Retrouve tes produits, compose une box et prepare ta commande en un seul endroit.</p>
+
+        <div class="deluxe-actions">
+            <a href="products.html" class="btn btn-secondary">Voir le menu</a>
+            <a href="buildbox.html" class="btn btn-outline">Creer une box</a>
+        </div>
+
+        <div class="order-container">
+            <div class="cart">
+                <h2>🛍️ Panier</h2>
+
+                <div id="cartItems">
+                    <p>Aucun produit ajoute</p>
+                </div>
+
+                <h3 id="totalCart">Total : 0 DA</h3>
+                <button class="btn" onclick="validateOrder()">
+                    Valider mon panier
+                </button>
+                <button class="btn btn-secondary" onclick="clearCart()"> Vider le panier</button>
+            </div>
+
+            <div class="box-order">
+                <h2>Build Your Box</h2>
+
+                <label>🍗 Viande :</label>
+                <select id="meat">
+                    <option value="Poulet" data-price="800">Poulet - 800 DA</option>
+                    <option value="Viande" data-price="1000">Viande - 1000 DA</option>
+                    <option value="Mixte" data-price="1200">Mixte - 1200 DA</option>
+                </select>
+
+                <label>🍟 Extras :</label>
+                <select id="extra">
+                    <option value="Nuggets" data-price="400">Nuggets - 400 DA</option>
+                    <option value="Onion Rings" data-price="300">Onion Rings - 300 DA</option>
+                    <option value="Wings" data-price="500">Wings - 500 DA</option>
+                </select>
+
+                <label>🥤 Boisson :</label>
+                <select id="drink">
+                    <option value="Coca" data-price="200">Coca - 200 DA</option>
+                    <option value="Jus" data-price="300">Jus - 300 DA</option>
+                </select>
+
+                <h3 id="boxTotal">Total Box : 0 DA</h3>
+
+                <button class="btn order-submit" onclick="addBoxToCart()">Ajouter au panier</button>
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 Fast Food Deluxe</p>
+</footer>
+
+<script src="../javascript/order.js"></script>
+
+</body>
+</html>
