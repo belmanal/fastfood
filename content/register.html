@@ -15,37 +15,31 @@
 </header>
 
 <section class="form-section">
-    <h2>Créer un compte</h2>
+    <h2 id="title">Créer un compte</h2>
 
     <form id="registerForm">
 
-        <label>🌍 Langue :</label>
-        <select id="langue" required>
-            <option value="">Choisir</option>
-            <option value="fr">Français</option>
-            <option value="ar">Arabe</option>
-            <option value="en">Anglais</option>
-        </select>
+        <label id="label-langue">🌍 Langue :</label>
+<select id="langue">
+    <option value="">Choisir</option>
+    <option value="fr">Français</option>
+    <option value="ar">Arabe</option>
+    <option value="en">Anglais</option>
+</select>
 
-        <label>📍 Wilaya :</label>
-        <select id="wilaya" required>
-            <option value="">Choisir</option>
-            <option>Alger</option>
-            <option>Oran</option>
-            <option>Constantine</option>
-            <option>Annaba</option>
-        </select>
+<label id="label-wilaya">📍 Wilaya :</label>
+<select id="wilaya"></select>
 
-        <label>👤 Prénom :</label>
-        <input type="text" id="name" required>
+<label id="label-name">👤 Prénom :</label>
+<input type="text" id="name">
 
-        <label>📧 Email :</label>
-        <input type="email" id="email" required>
+<label id="label-email">📧 Email :</label>
+<input type="email" id="email">
 
-        <label>🔒 Mot de passe :</label>
-        <input type="password" id="password" required>
+<label id="label-password">🔒 Mot de passe :</label>
+<input type="password" id="password">
 
-        <button class="btn">S'inscrire</button>
+<button class="btn" id="btn">S'inscrire</button>
     </form>
     <p class="login-link">
         Déjà un compte ?
