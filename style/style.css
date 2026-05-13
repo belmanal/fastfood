@@ -389,7 +389,7 @@ body {
     background: rgba(255, 255, 255, 0.08);
     border: 1px dashed rgba(255, 255, 255, 0.18);
     color: rgba(255, 255, 255, 0.88);
-    max-height: 400px;
+    max-height: 270px;
     overflow-y: auto;
 }
 
@@ -640,7 +640,7 @@ body {
 .product-card .price {
     display: block;
     width: fit-content;
-    margin: 0 auto 10px auto; /* centre horizontalement */
+    margin: 0 auto 10px auto;
     background: #22c55e;
     color: white;
     padding: 6px 12px;
@@ -662,14 +662,13 @@ body {
     font-weight: 600;
 
     cursor: pointer;
-
     transition: 0.25s ease;
 
     backdrop-filter: blur(6px);
     margin-bottom: 8px;
 }
 .product-card .desc:hover{
-    transition: 0.3s;
+    transform: scale(1.1);
 }
 .popup {
     position: fixed;
