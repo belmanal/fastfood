@@ -26,17 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 cart.forEach((item, index) => {
 
-    total += item.price * item.qty;
+    const price = Number(item.price) || 0;
+    const qty = Number(item.qty) || 1;
+    const name = item.name || "Box personnalisée";
+
+    total += price * qty;
 
     cartItems.innerHTML += `
         <div class="cart-item">
 
             <div class="cart-item-left">
-                <span style="font-size:40px">${item.image}</span>
+                <span style="font-size:40px">${item.image || "🛒"}</span>
 
                 <div>
-                    <h3>${item.qty} ${item.name} </h3>
-                    <p>${item.price * item.qty} DA</p>
+                    <h3>${qty} ${name}</h3>
+                    <p>${price * qty} DA</p>
                 </div>
             </div>
 
