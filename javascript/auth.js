@@ -8,10 +8,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (user) {
 
-        authDiv.innerHTML = `
-            <span>👋 Bonjour ${user.name}</span>
-            <button class="btn" onclick="logout()">Déconnexion</button>
-        `;
+    authDiv.innerHTML = `
+        <div class="user-menu">
+
+            <button id="userBtn" class="btn">
+                Bonjour ${user.name} ▼
+            </button>
+
+            <div id="dropdown" class="dropdown hidden">
+                <a href="content/profile.html">👤 Mon profil</a>
+                <a href="#" onclick="logout()">➜] Déconnexion</a>
+            </div>
+
+        </div>
+    `;
+        const userBtn = document.getElementById("userBtn");
+
+        userBtn.addEventListener("click", function () {
+
+            document
+                .getElementById("dropdown")
+                .classList.toggle("hidden");
+        });
     }
 
 });
