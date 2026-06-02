@@ -34,7 +34,6 @@ const translations = {
   }
 };
 
-// 🔁 CHANGER LANGUE
 function changeLanguage(lang) {
   const t = translations[lang];
   if (!t) return;
@@ -47,7 +46,7 @@ function changeLanguage(lang) {
   document.getElementById("label-password").textContent = t.password;
   document.getElementById("btn").textContent = t.btn;
 
-  // 🔁 wilaya dynamique
+
   const wilayaSelect = document.getElementById("wilaya");
   wilayaSelect.innerHTML = "";
 
@@ -57,19 +56,15 @@ function changeLanguage(lang) {
     wilayaSelect.appendChild(option);
   });
 
-  // ↔️ arabe RTL
   document.body.style.direction = (lang === "ar") ? "rtl" : "ltr";
 
-  // 💾 sauvegarder langue
   localStorage.setItem("lang", lang);
 }
 
-// 🌍 changement select
 langueSelect.addEventListener("change", function () {
   changeLanguage(this.value);
 });
 
-// 🚀 charger langue au démarrage
 window.addEventListener("load", () => {
   const saved = localStorage.getItem("lang") || "fr";
   langueSelect.value = saved;
