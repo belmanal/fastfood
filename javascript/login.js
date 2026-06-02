@@ -7,23 +7,19 @@ form.addEventListener("submit", function (e) {
     const email = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value.trim();
 
-    // Récupérer tous les utilisateurs inscrits
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Chercher l'utilisateur
     const user = users.find(
         u => u.email === email && u.password === password
     );
 
     if (user) {
 
-        // Sauvegarder la session
         localStorage.setItem(
             "currentUser",
             JSON.stringify(user)
         );
 
-        // Redirection si l'utilisateur voulait commander
         const redirect = localStorage.getItem("redirectAfterLogin");
 
         if (redirect === "order") {
