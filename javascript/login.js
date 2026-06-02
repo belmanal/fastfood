@@ -1,5 +1,18 @@
 const form = document.getElementById("loginForm");
 
+const togglePassword = document.getElementById("togglePassword");
+const loginPasswordInput = document.getElementById("loginPassword");
+
+togglePassword.addEventListener("click", function () {
+    if (loginPasswordInput.type === "password") {
+        loginPasswordInput.type = "text";
+        togglePassword.textContent = "🔓";
+    } else {
+        loginPasswordInput.type = "password";
+        togglePassword.textContent = "🔐";
+    }
+});
+
 form.addEventListener("submit", function (e) {
 
     e.preventDefault();
