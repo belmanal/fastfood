@@ -80,9 +80,12 @@ form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const user = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        password: document.getElementById("password").value.trim(),
+        wilaya: document.getElementById("wilaya").value
+    };
 
     // regex nom
     const nameRegex = /^[A-Za-zÀ-ÿ\s]{3,}$/;
@@ -93,22 +96,35 @@ form.addEventListener("submit", function (e) {
     // regex password
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
 
-    if (!nameRegex.test(name)) {
+    if (!nameRegex.test(user.name)) {
         alert("Le prénom doit contenir uniquement des lettres et au moins 3 caractères.");
         return;
     }
-    
-    if (!emailRegex.test(email)) {
+
+    if (!emailRegex.test(user.email)) {
         alert("Veuillez entrer une adresse email valide.");
         return;
     }
-    
-    if (!passwordRegex.test(password)) {
+
+    if (!passwordRegex.test(user.password)) {
         alert("Le mot de passe doit contenir au moins 6 caractères, une majuscule et un chiffre.");
         return;
     }
 
-    alert("Inscription validée !");
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const exist = users.find(u => u.email === user.email);
+
+    if (exist) {
+        alert("Email déjà utilisé !");
+        return;
+    }
+
+    users.push(user);
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Compte créé avec succès !");
 
     window.location.href = "login.html";
 });
