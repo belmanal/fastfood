@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon profil</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+
+<div class="profile-container">
+
+    <h2>👤 Mon profil</h2>
+
+    <form id="profileForm">
+
+        <label>Prénom</label>
+        <input type="text" id="name">
+
+        <label>Ancien mot de passe</label>
+        <input type="password" id="oldPassword">
+
+        <label>Nouveau mot de passe</label>
+
+        <div class="password-box">
+            <input type="password" id="newPassword">
+            <span id="togglePassword">🔐</span>
+        </div>
+
+        <label>Confirmer le nouveau mot de passe</label>
+        <div class="password-box">
+            <input type="password" id="confirmPassword">
+            <span id="togglePassword">🔐</span>
+        </div>
+        <button type="submit">
+            Enregistrer
+        </button>
+
+    </form>
+
+</div>
+
+<script src="../javascript/profile.js"></script>
+
+</body>
+</html>
