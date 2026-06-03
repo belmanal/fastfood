@@ -34,7 +34,8 @@
 
             <div class="box-section">
                 <h3>🍔 Plat principal</h3>
-                <select id="main" onchange="updatePrice()">
+                <select id="main" onchange="updatePrice()" required>
+                    <option value="" disabled selected hidden>Choisir un plat</option>  
                     <option value="Burger" data-price="800">Burger - 800 DA</option>
                     <option value="Pizza" data-price="1200">Pizza - 1200 DA</option>
                     <option value="Tacos" data-price="900">Tacos - 900 DA</option>
@@ -46,7 +47,8 @@
 
             <div class="box-section">
                 <h3>🍟 Accompagnement</h3>
-                <select id="side" onchange="updatePrice()">
+                <select id="side" onchange="updatePrice()" required>
+                    <option value="" disabled selected hidden>Choisir accompagnement</option>
                     <option value="Frites" data-price="300">Frites - 300 DA</option>
                     <option value="Nuggets" data-price="500">Nuggets - 500 DA</option>
                     <option value="Wings" data-price="600">Wings - 600 DA</option>
@@ -55,7 +57,8 @@
 
             <div class="box-section">
                 <h3>🥤 Boisson</h3>
-                <select id="drink" onchange="updatePrice()">
+                <select id="drink" onchange="updatePrice()" required>
+                    <option value="" disabled selected hidden>Choisir boisson</option>
                     <option value="Coca" data-price="200">Coca - 200 DA</option>
                     <option value="Jus" data-price="300">Jus Nature - 300 DA</option>
                     <option value="Milkshake" data-price="400">Milkshake - 400 DA</option>
@@ -64,7 +67,8 @@
 
             <div class="box-section">
                 <h3>🍰 Dessert</h3>
-                <select id="dessert" onchange="updatePrice()">
+                <select id="dessert" onchange="updatePrice()" required>
+                    <option value="" disabled selected hidden>Choisir un dessert</option>
                     <option value="Fondant" data-price="500">Fondant - 500 DA</option>
                     <option value="Brownie" data-price="450">Brownie - 450 DA</option>
                     <option value="Tiramisu" data-price="600">Tiramisu - 600 DA</option>
