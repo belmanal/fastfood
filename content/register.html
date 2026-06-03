@@ -4,50 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='1em' font-size='80'%3E🍔%3C/text%3E%3C/svg%3E">
+
     <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
 
 <header class="header">
-   <h1><a href="../index.html">🍔</a> Fast Food Deluxe</h1>
+    <h1>
+        <a href="../index.html">🍔</a>
+        Fast Food Deluxe
+    </h1>
 </header>
 
 <section class="form-section">
-    <h2 id="title">Créer un compte</h2>
+
+    <h2>Créer un compte</h2>
 
     <form id="registerForm">
 
-        <label id="label-langue">🌍 Langue :</label>
-<select id="langue">
-    <option value="">Choisir</option>
-    <option value="fr">Français</option>
-    <option value="ar">العربية</option>
-    <option value="en">Anglais</option>
-</select>
+        <!-- Langue -->
+        <label for="langue">🌍 Langue :</label>
+        <select id="langue" required>
+            <option value="">Choisir</option>
+            <option value="fr">Français</option>
+            <option value="ar">Arabe</option>
+            <option value="en">Anglais</option>
+        </select>
 
-<label id="label-wilaya">📍 Wilaya :</label>
-<select id="wilaya"></select>
+        <!-- Wilaya -->
+        <label for="wilaya">📍 Wilaya :</label>
+        <select id="wilaya" required>
+            <option value="">Choisir</option>
+            <option value="alger">Alger</option>
+            <option value="oran">Oran</option>
+            <option value="constantine">Constantine</option>
+            <option value="annaba">Annaba</option>
+        </select>
 
-<label id="label-name">👤 Prénom :</label>
-<input type="text" id="name">
+        <!-- Nom -->
+        <label for="name">👤 Prénom :</label>
+        <input type="text" id="name" required>
 
-<label id="label-email">📧 Email :</label>
-<input type="email" id="email">
+        <!-- Email -->
+        <label for="email">📧 Email :</label>
+        <input type="email" id="email" required>
 
-<label id="label-password">🔒 Mot de passe :</label>
-<div class="password-box">
-    <input type="password" id="password">
-    <span id="togglePassword">🔐</span>
-</div>
+        <!-- Password -->
+        <label for="password">🔒 Mot de passe :</label>
+        <input type="password" id="password" required>
 
-<button class="btn" id="btn">S'inscrire</button>
+        <!-- Button -->
+        <button type="submit" class="btn">S'inscrire</button>
+
     </form>
+
     <p class="login-link">
         Déjà un compte ?
         <a href="login.html">Se connecter</a>
     </p>
+
 </section>
 
 <script src="../javascript/register.js"></script>
