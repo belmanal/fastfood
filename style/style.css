@@ -735,6 +735,14 @@ body {
     transform: translateY(-10px);
 }
 
+.error{
+    display:block;
+    color:red;
+    font-size:13px;
+    margin-top:-5px;
+    margin-bottom:10px;
+}
+
 .footer {
     background: #111;
     color: white;
