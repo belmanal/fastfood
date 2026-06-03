@@ -1,3 +1,15 @@
+const togglePassword = document.getElementById("togglePassword");
+const loginPasswordInput = document.getElementById("loginPassword");
+
+togglePassword.addEventListener("click", function () {
+    if (loginPasswordInput.type === "password") {
+        loginPasswordInput.type = "text";
+        togglePassword.textContent = "🔓";
+    } else {
+        loginPasswordInput.type = "password";
+        togglePassword.textContent = "🔐";
+    }
+});
 document.getElementById("loginForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -39,7 +51,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     const user = JSON.parse(savedUser);
 
-    // 🔥 3. email n'existe pas → compte différent
+    // 3. email n'existe pas → compte différent
     if (email !== user.email) {
         msg.textContent = "⚠️ Aucun compte avec cet email. Créez un compte d’abord";
         msg.style.background = "#f5e09e";
@@ -64,9 +76,12 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     this.appendChild(msg);
 
-    sessionStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem(
+        "currentUser",
+        JSON.stringify(user)
+    );
 
     setTimeout(() => {
         window.location.href = "../index.html";
-    }, 2000);
+    }, 1000);
 });
