@@ -43,6 +43,10 @@
                 </div>
 
                 <h3 id="totalCart">Total : 0 DA</h3>
+                <button class="btn" onclick="validateOrder()">
+                    Valider mon panier
+                </button>
+                <button class="btn btn-secondary" onclick="clearCart()"> Vider le panier</button>
             </div>
 
             <div class="box-order">
@@ -50,6 +54,7 @@
 
                 <label>🍗 Viande :</label>
                 <select id="meat">
+                    <option value="" disabled selected hidden>Choisir viande</option>
                     <option value="Poulet" data-price="800">Poulet - 800 DA</option>
                     <option value="Viande" data-price="1000">Viande - 1000 DA</option>
                     <option value="Mixte" data-price="1200">Mixte - 1200 DA</option>
@@ -57,6 +62,7 @@
 
                 <label>🍟 Extras :</label>
                 <select id="extra">
+                    <option value="" disabled selected hidden>Choisir extras</option>
                     <option value="Nuggets" data-price="400">Nuggets - 400 DA</option>
                     <option value="Onion Rings" data-price="300">Onion Rings - 300 DA</option>
                     <option value="Wings" data-price="500">Wings - 500 DA</option>
@@ -64,12 +70,14 @@
 
                 <label>🥤 Boisson :</label>
                 <select id="drink">
+                    <option value="" disabled selected hidden>Choisir boisson</option>
                     <option value="Coca" data-price="200">Coca - 200 DA</option>
                     <option value="Jus" data-price="300">Jus - 300 DA</option>
                 </select>
 
                 <h3 id="boxTotal">Total Box : 0 DA</h3>
-
+                
+                <div id="boxMessage"></div>
                 <button class="btn order-submit" onclick="addBoxToCart()">Ajouter au panier</button>
             </div>
         </div>
