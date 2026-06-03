@@ -54,8 +54,11 @@
 
         <!-- Password -->
         <label for="password">🔒 Mot de passe :</label>
-        <input type="password" id="password" required>
-        <small id="passwordError" class="error"></small>
+        <div class="password-box">
+            <input type="password" id="password" required>
+            <span id="togglePassword">🔐</span>
+            <small id="passwordError" class="error"></small>
+        </div>
 
         <!-- Button -->
         <button type="submit" class="btn">S'inscrire</button>
