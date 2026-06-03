@@ -72,7 +72,7 @@ body {
 
 .deluxe {
     background: url("https://images.unsplash.com/photo-1550547660-d9450f859349") center/cover;
-    height: 80vh;
+    height: auto;
     min-height: 560px;
     padding: 40px 20px;
 
