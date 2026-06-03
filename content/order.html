@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commande - Fast Food Deluxe</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='1em' font-size='80'%3E🍔%3C/text%3E%3C/svg%3E">
+
     <link rel="stylesheet" href="../style/style.css">
 </head>
 
@@ -17,7 +17,9 @@
         <a href="../index.html">Accueil</a>
         <a href="products.html">Menu</a>
         <a href="buildbox.html">🍱 Build Box</a>
-        <a class="selected" href="order.html">Commander</a>
+        <button onclick="checkout()" class="btn">
+    Commander
+</button>
     </nav>
 </header>
 
@@ -34,17 +36,13 @@
 
         <div class="order-container">
             <div class="cart">
-                <h2>🛍️ Panier</h2>
+                <h2>🛍 Panier</h2>
 
                 <div id="cartItems">
                     <p>Aucun produit ajoute</p>
                 </div>
 
                 <h3 id="totalCart">Total : 0 DA</h3>
-                <button class="btn" onclick="validateOrder()">
-                    Valider mon panier
-                </button>
-                <button class="btn btn-secondary" onclick="clearCart()"> Vider le panier</button>
             </div>
 
             <div class="box-order">
@@ -73,8 +71,6 @@
                 <h3 id="boxTotal">Total Box : 0 DA</h3>
 
                 <button class="btn order-submit" onclick="addBoxToCart()">Ajouter au panier</button>
-                
-
             </div>
         </div>
     </div>
@@ -83,8 +79,8 @@
 <footer class="footer">
     <p>© 2026 Fast Food Deluxe</p>
 </footer>
-
 <script src="../javascript/order.js"></script>
+
 
 </body>
 </html>
