@@ -1,138 +1,95 @@
 const form = document.getElementById("registerForm");
-const langueSelect = document.getElementById("langue");
+const langue = document.getElementById("langue");
 
-const togglePassword = document.getElementById("togglePassword");
-const passwordInput = document.getElementById("password");
-
-togglePassword.addEventListener("click", function () {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        togglePassword.textContent = "🔓";
-    } else {
-        passwordInput.type = "password";
-        togglePassword.textContent = "🔐";
+// Traductions
+const texts = {
+    fr: {
+        title: "Créer un compte",
+        name: "Prénom",
+        email: "Email",
+        password: "Mot de passe",
+        wilaya: "Wilaya",
+        button: "S'inscrire",
+        success: "Inscription réussie ✔️"
+    },
+    ar: {
+        title: "إنشاء حساب",
+        name: "الاسم",
+        email: "البريد الإلكتروني",
+        password: "كلمة المرور",
+        wilaya: "الولاية",
+        button: "تسجيل",
+        success: "تم التسجيل بنجاح ✔️"
+    },
+    en: {
+        title: "Create Account",
+        name: "First Name",
+        email: "Email",
+        password: "Password",
+        wilaya: "State",
+        button: "Sign up",
+        success: "Registration successful ✔️"
     }
-});
-
-const translations = {
-  fr: {
-    title: "Créer un compte",
-    lang: "🌍 Langue :",
-    wilaya: "📍 Wilaya :",
-    name: "👤 Prénom :",
-    email: "📧 Email :",
-    password: "🔒 Mot de passe :",
-    btn: "S'inscrire",
-    wilayas: ["Alger", "Oran", "Constantine", "Annaba"]
-  },
-  en: {
-    title: "Create account",
-    lang: "🌍 Language :",
-    wilaya: "📍 Province :",
-    name: "👤 First name :",
-    email: "📧 Email :",
-    password: "🔒 Password :",
-    btn: "Sign up",
-    wilayas: ["Algiers", "Oran", "Constantine", "Annaba"]
-  },
-  ar: {
-    title: "إنشاء حساب",
-    lang: "🌍 اللغة :",
-    wilaya: "📍 الولاية :",
-    name: "👤 الاسم :",
-    email: "📧 البريد الإلكتروني :",
-    password: "🔒 كلمة المرور :",
-    btn: "تسجيل",
-    wilayas: ["الجزائر", "وهران", "قسنطينة", "عنابة"]
-  }
 };
 
-function changeLanguage(lang) {
-  const t = translations[lang];
-  if (!t) return;
+// changer langue
+langue.addEventListener("change", () => {
+    updateLanguage(langue.value);
+});
 
-  document.getElementById("title").textContent = t.title;
-  document.getElementById("label-langue").textContent = t.lang;
-  document.getElementById("label-wilaya").textContent = t.wilaya;
-  document.getElementById("label-name").textContent = t.name;
-  document.getElementById("label-email").textContent = t.email;
-  document.getElementById("label-password").textContent = t.password;
-  document.getElementById("btn").textContent = t.btn;
+function updateLanguage(lang) {
+    if (!texts[lang]) return;
 
+    document.querySelector("h2").textContent = texts[lang].title;
 
-  const wilayaSelect = document.getElementById("wilaya");
-  wilayaSelect.innerHTML = "";
+    const labels = document.querySelectorAll("label");
 
-  t.wilayas.forEach(w => {
-    const option = document.createElement("option");
-    option.textContent = w;
-    wilayaSelect.appendChild(option);
-  });
+    labels[1].textContent = "🌍 " + texts[lang].wilaya + " :";
+    labels[2].textContent = "👤 " + texts[lang].name + " :";
+    labels[3].textContent = "📧 " + texts[lang].email + " :";
+    labels[4].textContent = "🔒 " + texts[lang].password + " :";
 
-  document.body.style.direction = (lang === "ar") ? "rtl" : "ltr";
-
-  localStorage.setItem("lang", lang);
+    document.querySelector(".btn").textContent = texts[lang].button;
 }
 
-langueSelect.addEventListener("change", function () {
-  changeLanguage(this.value);
-});
-
-window.addEventListener("load", () => {
-  const saved = localStorage.getItem("lang") || "fr";
-  langueSelect.value = saved;
-  changeLanguage(saved);
-});
-
+// message + INSCRIPTION
 form.addEventListener("submit", function (e) {
-
     e.preventDefault();
 
+    const lang = langue.value || "fr";
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // 🔥 AJOUT LOCALSTORAGE (nouveau فقط)
     const user = {
-        name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        password: document.getElementById("password").value.trim(),
-        wilaya: document.getElementById("wilaya").value
+        name: name,
+        email: email,
+        password: password
     };
 
-    // regex nom
-    const nameRegex = /^[A-Za-zÀ-ÿ\s]{3,}$/;
+    localStorage.setItem("user", JSON.stringify(user));
 
-    // regex email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // message succès
+    const msg = document.createElement("div");
+    msg.className = "success";
+msg.style.background = "#d4edda";
+msg.style.color = "#155724";
+msg.style.padding = "12px";
+msg.style.borderRadius = "20px";
+msg.style.marginTop = "10px";
+msg.style.textAlign = "center";
+msg.style.fontWeight = "bold";
+msg.style.border = "2px solid #28a745";
+msg.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+msg.style.display = "inline-block";
+    msg.textContent = texts[lang].success;
 
-    // regex password
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+    form.appendChild(msg);
 
-    if (!nameRegex.test(user.name)) {
-        alert("Le prénom doit contenir uniquement des lettres et au moins 3 caractères.");
-        return;
-    }
-
-    if (!emailRegex.test(user.email)) {
-        alert("Veuillez entrer une adresse email valide.");
-        return;
-    }
-
-    if (!passwordRegex.test(user.password)) {
-        alert("Le mot de passe doit contenir au moins 6 caractères, une majuscule et un chiffre.");
-        return;
-    }
-
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const exist = users.find(u => u.email === user.email);
-
-    if (exist) {
-        alert("Email déjà utilisé !");
-        return;
-    }
-
-    users.push(user);
-
-    localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Compte créé avec succès !");
-
-    window.location.href = "login.html";
+    // redirection login
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 4000);
 });
