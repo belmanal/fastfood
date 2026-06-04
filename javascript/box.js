@@ -62,7 +62,7 @@ function createBox() {
 
     result.innerHTML = `
         <div class="success-box">
-            <h3>Box créée avec succès</h3>
+            <h3>Box créée et ajouter au panier avec succès </h3>
             <p>${box.name}</p>
             <h2>${total} DA</h2>
         </div>
