@@ -1,11 +1,9 @@
-// ========== FONCTION POUR RÉCUPÉRER LE PRIX ==========
 function getPrice(selectId) {
     const select = document.getElementById(selectId);
     const option = select.options[select.selectedIndex];
     return Number(option.getAttribute("data-price")) || 0;
 }
 
-// ========== MISE À JOUR DYNAMIQUE DU TOTAL BOX ==========
 function updateBoxTotal() {
     const meatPrice = getPrice("meat");
     const extraPrice = getPrice("extra");
@@ -14,52 +12,84 @@ function updateBoxTotal() {
     const total = meatPrice + extraPrice + drinkPrice;
 
     const totalBoxSpan = document.getElementById("boxTotal");
-    totalBoxSpan.textContent = total + " DA";
+    if (totalBoxSpan) {
+        totalBoxSpan.textContent = total + " DA";
+    }
 }
 
-// ========== AJOUTER LES ÉCOUTEURS D'ÉVÉNEMENTS ==========
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+
     const meat = document.getElementById("meat");
     const extra = document.getElementById("extra");
     const drink = document.getElementById("drink");
 
-    meat.addEventListener("change", updateBoxTotal);
-    extra.addEventListener("change", updateBoxTotal);
-    drink.addEventListener("change", updateBoxTotal);
+    if (meat) meat.addEventListener("change", updateBoxTotal);
+    if (extra) extra.addEventListener("change", updateBoxTotal);
+    if (drink) drink.addEventListener("change", updateBoxTotal);
 
-
+    updateCart();
 });
 
-// ========== PANIER ==========
-let cart = [];
-
-// ========== AJOUT BOX AU PANIER ==========
 function addBoxToCart() {
+
     const meat = document.getElementById("meat");
     const extra = document.getElementById("extra");
     const drink = document.getElementById("drink");
 
-    const meatPrice = Number(meat.options[meat.selectedIndex].dataset.price || 0);
-    const extraPrice = Number(extra.options[extra.selectedIndex].dataset.price || 0);
-    const drinkPrice = Number(drink.options[drink.selectedIndex].dataset.price || 0);
+    const message = document.getElementById("boxMessage");
+
+    if (!meat.value || !extra.value || !drink.value) {
+        message.innerHTML = `
+            <div class="error-box">
+                ⚠️ Veuillez tout choisir
+            </div>
+        `;
+        return;
+    }
+
+    const meatPrice = Number(meat.options[meat.selectedIndex].dataset.price);
+    const extraPrice = Number(extra.options[extra.selectedIndex].dataset.price);
+    const drinkPrice = Number(drink.options[drink.selectedIndex].dataset.price);
 
     const total = meatPrice + extraPrice + drinkPrice;
 
-    const box = {
-        name: `Box (${meat.value}, ${extra.value}, ${drink.value})`,
-        price: total
-    };
+    const boxName = `${meat.value} | ${extra.value} | ${drink.value}`;
 
-    cart.push(box);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let index = cart.findIndex(item => item.name === boxName);
+
+    if (index !== -1) {
+        cart[index].qty += 1;
+    } else {
+        cart.push({
+            name: boxName,
+            price: total,
+            qty: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    message.innerHTML = `
+        <div class="success-box">
+            <h4>Ajouté au panier avec succès</h4>
+        </div>
+    `;
     updateCart();
 }
 
-// ========== UPDATE PANIER ==========
 function updateCart() {
+
     const cartItems = document.getElementById("cartItems");
     const totalCart = document.getElementById("totalCart");
 
+    if (!cartItems || !totalCart) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
     cartItems.innerHTML = "";
+
+    let total = 0;
 
     if (cart.length === 0) {
         cartItems.innerHTML = "<p>Aucun produit ajouté</p>";
@@ -67,16 +97,67 @@ function updateCart() {
         return;
     }
 
-    let total = 0;
+    cart.forEach((item, index) => {
 
-    cart.forEach(item => {
-        total += item.price;
+        const price = Number(item.price) || 0;
+        const qty = item.qty || 1;
 
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.textContent = `${item.name} - ${item.price} DA`;
-        cartItems.appendChild(div);
+        const lineTotal = price * qty;
+
+        total += lineTotal;
+
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <div class="cart-info">
+                    <h3>${qty} x ${item.name}</h3>
+                    <p>${lineTotal} DA</p>
+                </div>
+
+                <button class="btn-order" onclick="removeItem(${index})">×</button>
+            </div>
+        `;
     });
 
-    totalCart.textContent = `Total : ${total} DA`;
+    totalCart.textContent = "Total : " + total + " DA";
+}
+
+window.removeItem = function (index) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCart();
+};
+
+function validateOrder() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        alert("Panier vide !");
+        return;
+    }
+
+    let user = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!user) {
+        alert("Veuillez vous connecter !");
+        window.location.href = "login.html";
+        return;
+    }
+
+    alert("Commande validée !");
+    localStorage.removeItem("cart");
+    location.reload();
+}
+
+function clearCart() {
+
+    if (!confirm("Vider le panier ?")) return;
+
+    localStorage.removeItem("cart");
+    location.reload();
 }
