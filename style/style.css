@@ -383,6 +383,9 @@ body {
 }
 
 #cartItems {
+    max-height: 300px;   
+    overflow-y: auto;   
+    padding-right: 8px;
     min-height: 180px;
     padding: 18px;
     border-radius: 18px;
@@ -782,14 +785,44 @@ body {
 }
 
 .btn-order{
-    background: red;
-    color: white;
+    background: none;
+    color: red;
     border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 15px;
+}
+.btn-order:hover{
+    background: rgb(206, 206, 206);
+    border: none;
+    border-radius: 50%;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: #28a745;
+    color: white;
+    padding: 18px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+
+    display: none;
+    z-index: 9999;
+
+    box-shadow: 0 10px 25px rgba(196, 196, 196, 0.3);
+    text-align: center;
+
+    animation: pop 0.2s ease;
+}
+
+.popup.hide {
+    opacity: 2;
+    transition: 0.2s;
 }
 
 .footer {
@@ -816,6 +849,16 @@ body {
     to { opacity: 1; }
 }
 
+@keyframes pop {
+    from {
+        transform: translate(-50%, -50%) scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
