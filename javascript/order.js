@@ -106,7 +106,7 @@ function validateOrder() {
         return;
     }
 
-    alert("Commande validée !");
+    alert("Votre commande a été effectuée avec succès!");
     localStorage.removeItem("cart");
     location.reload();
 }
