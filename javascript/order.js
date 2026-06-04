@@ -108,10 +108,12 @@ function updateCart() {
 
         cartItems.innerHTML += `
             <div class="cart-item">
-                <div class="cart-info">
-                    <h3>${qty} x ${item.name}</h3>
-                    <p>${lineTotal} DA</p>
-                </div>
+            <img class="cart-img" src="${item.image}" width="60">
+
+            <div class="cart-info">
+                <h3>${qty} x ${item.name}</h3>
+                <p>${lineTotal} DA</p>
+            </div>
 
                 <button class="btn-order" onclick="removeItem(${index})">🗑️</button>
             </div>
