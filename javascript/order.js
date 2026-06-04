@@ -4,6 +4,7 @@ function getPrice(selectId) {
     return Number(option.getAttribute("data-price")) || 0;
 }
 
+// ===== TOTAL BOX =====
 function updateBoxTotal() {
     const meatPrice = getPrice("meat");
     const extraPrice = getPrice("extra");
@@ -17,6 +18,7 @@ function updateBoxTotal() {
     }
 }
 
+// ===== INIT LISTENERS =====
 document.addEventListener("DOMContentLoaded", function () {
 
     const meat = document.getElementById("meat");
@@ -30,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCart();
 });
 
+// ===== AJOUT BOX =====
 function addBoxToCart() {
 
     const meat = document.getElementById("meat");
@@ -78,6 +81,7 @@ function addBoxToCart() {
     updateCart();
 }
 
+// ===== UPDATE PANIER =====
 function updateCart() {
 
     const cartItems = document.getElementById("cartItems");
@@ -121,6 +125,7 @@ function updateCart() {
     totalCart.textContent = "Total : " + total + " DA";
 }
 
+// ===== REMOVE =====
 window.removeItem = function (index) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -132,12 +137,13 @@ window.removeItem = function (index) {
     updateCart();
 };
 
+// ===== VALIDATE =====
 function validateOrder() {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     if (cart.length === 0) {
-        alert("Panier vide !");
+        alert("Votre panier est vide !");
         return;
     }
 
@@ -154,9 +160,17 @@ function validateOrder() {
     location.reload();
 }
 
+// ===== CLEAR =====
 function clearCart() {
 
-    if (!confirm("Vider le panier ?")) return;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        alert("Votre panier est déjà vide !");
+        return;
+    }
+
+    if (!confirm("Voulez-vous vraiment vider le panier ?")) return;
 
     localStorage.removeItem("cart");
     location.reload();
