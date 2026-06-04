@@ -17,7 +17,7 @@
         <a href="../index.html">Accueil</a>
         <a href="products.html">Menu</a>
         <a href="buildbox.html">🍱 Build Box</a>
-        <a href="order.html">Panier</a>
+        <a class="selected" href="order.html">Panier</a>
     </nav>
 </header>
 
@@ -73,6 +73,31 @@
 <footer class="footer">
     <p>© 2026 Fast Food Deluxe</p>
 </footer>
+
+<div id="orderPopup" class="popup-overlay hidden">
+
+    <div class="popup-box">
+
+        <h2>Finaliser la commande</h2>
+
+        <div id="popupMessage" class="popup-message"></div>
+
+        <input type="text" id="address" placeholder="Adresse de livraison">
+
+        <input type="text" id="phone" placeholder="Numéro de téléphone">
+        <div>
+        <button onclick="confirmOrder()" class="btn-commander">
+            Confirmer
+        </button>
+
+        <button onclick="closePopup()" class="btn-cancel">
+            Annuler
+        </button>
+        </div>
+    </div>
+
+</div>
+
 <script src="../javascript/order.js"></script>
 
 
