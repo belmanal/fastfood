@@ -25,9 +25,7 @@
 
 <section class="deluxe order-deluxe">
     <div class="deluxe-content order-content">
-        <span class="deluxe-badge">Commande rapide</span>
         <h1>Finalise ton panier</h1>
-        <p>Retrouve tes produits, compose une box et prepare ta commande en un seul endroit.</p>
 
         <div class="deluxe-actions">
             <a href="products.html" class="btn btn-secondary">Voir le menu</a>
@@ -42,43 +40,33 @@
                     <p>Aucun produit ajoute</p>
                 </div>
 
-                <h3 id="totalCart">Total : 0 DA</h3>
-                <button class="btn" onclick="validateOrder()">
-                    Valider mon panier
-                </button>
-                <button class="btn btn-secondary" onclick="clearCart()"> Vider le panier</button>
+                <h5 id="totalCart"></h5>
+                <button class="btn-vider" onclick="clearCart()"> Vider le panier</button>
             </div>
 
             <div class="box-order">
-                <h2>Build Your Box</h2>
 
-                <label>🍗 Viande :</label>
-                <select id="meat">
-                    <option value="" disabled selected hidden>Choisir viande</option>
-                    <option value="Poulet" data-price="800">Poulet - 800 DA</option>
-                    <option value="Viande" data-price="1000">Viande - 1000 DA</option>
-                    <option value="Mixte" data-price="1200">Mixte - 1200 DA</option>
-                </select>
+                <h2>Résumé commande</h2>
 
-                <label>🍟 Extras :</label>
-                <select id="extra">
-                    <option value="" disabled selected hidden>Choisir extras</option>
-                    <option value="Nuggets" data-price="400">Nuggets - 400 DA</option>
-                    <option value="Onion Rings" data-price="300">Onion Rings - 300 DA</option>
-                    <option value="Wings" data-price="500">Wings - 500 DA</option>
-                </select>
+                <div class="resume-item">
+                    <span>Total à payer</span>
+                    <strong id="finalTotal" class="">0 DA</strong>
+                </div>
 
-                <label>🥤 Boisson :</label>
-                <select id="drink">
-                    <option value="" disabled selected hidden>Choisir boisson</option>
-                    <option value="Coca" data-price="200">Coca - 200 DA</option>
-                    <option value="Jus" data-price="300">Jus - 300 DA</option>
-                </select>
+                <div class="resume-item">
+                    <span>Livraison</span>
+                    <strong>Gratuite</strong>
+                </div>
 
-                <h3 id="boxTotal">Total Box : 0 DA</h3>
-                
-                <div id="boxMessage"></div>
-                <button class="btn order-submit" onclick="addBoxToCart()">Ajouter au panier</button>
+                <div class="resume-item">
+                    <span>Paiement</span>
+                    <strong>À la réception</strong>
+                </div>
+
+                <button class="btn-commander" onclick="validateOrder()">
+                    Commander
+                </button>
+
             </div>
         </div>
     </div>
