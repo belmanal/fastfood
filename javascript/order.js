@@ -99,28 +99,48 @@ function updateCart() {
 
     cart.forEach((item, index) => {
 
-        const price = Number(item.price) || 0;
-        const qty = item.qty || 1;
+    const price = Number(item.price) || 0;
+    const qty = item.qty || 1;
+    const lineTotal = price * qty;
 
-        const lineTotal = price * qty;
+    total += lineTotal;
 
-        total += lineTotal;
+    cartItems.innerHTML += `
+        <div class="cart-item">
 
-        cartItems.innerHTML += `
-            <div class="cart-item">
-            <img class="cart-img" src="${item.image}" width="60">
+            <img class="cart-img" src="${item.image || '../image/default.png'}">
 
             <div class="cart-info">
-                <h3>${qty} x ${item.name}</h3>
+                <h3>${item.name}</h3>
                 <p>${lineTotal} DA</p>
             </div>
 
-                <button class="btn-order" onclick="removeItem(${index})">🗑️</button>
-            </div>
-        `;
-    });
+            <select onchange="updateQty(${index}, this.value)">
+                ${[1,2,3,4,5,6,7,8,9,10].map(n => `
+                    <option value="${n}" ${n === qty ? "selected" : ""}>
+                        ${n}
+                    </option>
+                `).join("")}
+            </select>
+
+
+            <button onclick="removeItem(${index})">🗑️</button>
+        </div>
+    `;
+});
 
     totalCart.textContent = "Total : " + total + " DA";
+}
+
+function updateQty(index, newQty) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart[index].qty = Number(newQty);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCart();
 }
 
 window.removeItem = function (index) {
