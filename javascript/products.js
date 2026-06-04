@@ -16,7 +16,7 @@ const products = [
 
     // TACOS
     { name: "Tacos Poulet", category: "tacos", price: 600, image: "../image/tacos-poulet.png" },
-    { name: "Tacos Viande", category: "tacos", price: 650, image: "../image/tacos-viande.png" },
+    { name: "Tacos Viande", category: "tacos", price: 650, image: "../image/Tacos-viande.png" },
     { name: "Tacos Mixte", category: "tacos", price: 700, image: "../image/tacos-mix.png" },
     { name: "Tacos Gratiné", category: "tacos", price: 750, image: "../image/tacos-grt.png" },
 
@@ -39,7 +39,7 @@ const products = [
     // PLATS
     { name: "Escalope Frites", category: "plats", price: 900, image: "../image/esc.png" },
     { name: "Poulet Rôti", category: "plats", price: 1000, image: "../image/poulet-rout.png" },
-    { name: "Steak Frites", category: "plats", price: 1100, image: "../image/steak-frites.png" },
+    { name: "Steak Frites", category: "plats", price: 1100, image: "../image/Steak-frites.png" },
     { name: "Poulet Curry", category: "plats", price: 950, image: "../image/poulet-cry.png" },
 
     // TURC
