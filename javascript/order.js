@@ -1,22 +1,3 @@
-function getPrice(selectId) {
-    const select = document.getElementById(selectId);
-    const option = select.options[select.selectedIndex];
-    return Number(option.getAttribute("data-price")) || 0;
-}
-
-function updateBoxTotal() {
-    const meatPrice = getPrice("meat");
-    const extraPrice = getPrice("extra");
-    const drinkPrice = getPrice("drink");
-
-    const total = meatPrice + extraPrice + drinkPrice;
-
-    const totalBoxSpan = document.getElementById("boxTotal");
-    if (totalBoxSpan) {
-        totalBoxSpan.textContent = total + " DA";
-    }
-}
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const meat = document.getElementById("meat");
@@ -30,54 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCart();
 });
 
-function addBoxToCart() {
-
-    const meat = document.getElementById("meat");
-    const extra = document.getElementById("extra");
-    const drink = document.getElementById("drink");
-
-    const message = document.getElementById("boxMessage");
-
-    if (!meat.value || !extra.value || !drink.value) {
-        message.innerHTML = `
-            <div class="error-box">
-                ⚠️ Veuillez tout choisir
-            </div>
-        `;
-        return;
-    }
-
-    const meatPrice = Number(meat.options[meat.selectedIndex].dataset.price);
-    const extraPrice = Number(extra.options[extra.selectedIndex].dataset.price);
-    const drinkPrice = Number(drink.options[drink.selectedIndex].dataset.price);
-
-    const total = meatPrice + extraPrice + drinkPrice;
-
-    const boxName = `${meat.value} | ${extra.value} | ${drink.value}`;
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    let index = cart.findIndex(item => item.name === boxName);
-
-    if (index !== -1) {
-        cart[index].qty += 1;
-    } else {
-        cart.push({
-            name: boxName,
-            price: total,
-            qty: 1
-        });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    message.innerHTML = `
-        <div class="success-box">
-            <h4>Ajouté au panier avec succès</h4>
-        </div>
-    `;
-    updateCart();
-}
-
 function updateCart() {
 
     const cartItems = document.getElementById("cartItems");
@@ -90,10 +23,10 @@ function updateCart() {
     cartItems.innerHTML = "";
 
     let total = 0;
+    let totalItems = 0;
 
     if (cart.length === 0) {
-        cartItems.innerHTML = "<p>Aucun produit ajouté</p>";
-        totalCart.textContent = "Total : 0 DA";
+        cartItems.innerHTML = "<p>Votre panier est vide</p>";
         return;
     }
 
@@ -101,6 +34,7 @@ function updateCart() {
 
     const price = Number(item.price) || 0;
     const qty = item.qty || 1;
+    
     const lineTotal = price * qty;
 
     total += lineTotal;
@@ -129,7 +63,8 @@ function updateCart() {
     `;
 });
 
-    totalCart.textContent = "Total : " + total + " DA";
+
+    if (finalTotal) { finalTotal.textContent = total + " DA"; }
 }
 
 function updateQty(index, newQty) {
@@ -166,7 +101,7 @@ function validateOrder() {
     let user = JSON.parse(localStorage.getItem("currentUser"));
 
     if (!user) {
-        alert("Veuillez vous connecter !");
+        alert("Veuillez vous connecter d'abord!");
         window.location.href = "login.html";
         return;
     }
