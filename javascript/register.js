@@ -126,10 +126,7 @@ form.addEventListener("submit", function (e) {
 
     users.push(user);
 
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
+    localStorage.setItem("users", JSON.stringify(users));
 
     const msg = document.createElement("div");
 
