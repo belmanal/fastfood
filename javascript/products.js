@@ -87,8 +87,8 @@ function displayProducts(list) {
             <div class="product-card">
                 <img src="${p.image}">
                 <h3>${p.name}</h3>
-                <p>${p.price} DA</p>
-                <button onclick="addToCart('${p.name}', ${p.price}, '${p.image}')">Ajouter</button>
+                <p class="price">${p.price} DA</p>
+                <button class="btn-add" onclick="addToCart('${p.name}', ${p.price}, '${p.image}')">Ajouter au panier</button>
             </div>
         `;
     });
@@ -120,7 +120,7 @@ function showPopup(msg) {
 
     setTimeout(() => {
         popup.style.display = "none";
-    }, 1000);
+    }, 1500);
 }
 
 window.onload = () => {
