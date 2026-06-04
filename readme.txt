@@ -6,9 +6,10 @@ _Damen Lamia.         Group:5
 _Bounsiar Selma.      Group:5
 
 2) Description du site :
-Fast Food Deluxe est une plateforme web de restauration rapide qui permet aux utilisateurs de consulter un menu varié, rechercher des produits, filtrer les plats par catégorie, créer une box personnalisée et passer des commandes en ligne.
+Fast Food Deluxe est une plateforme web de restauration rapide qui permet aux utilisateurs de consulter un menu varié, de rechercher des produits, de filtrer les plats par catégorie, créer une box personnalisée et passer des commandes en ligne.
 Le site propose plusieurs catégories de produits telles que les burgers, pizzas, tacos, paninis, sandwichs, plats, desserts, boissons, glaces, milkshakes et salades. Les utilisateurs peuvent ajouter des articles au panier, modifier les quantités, supprimer des produits et finaliser leur commande.
-Le site permet aux utilisateurs de créer un compte, se connecter et modifier leurs informations personnelles. 
+Le site permet également aux utilisateurs de créer un compte, se connecter et modifier leurs informations personnelles. 
+Le site a été déployé et hébergé sur la plateforme Render afin d'être accessible en ligne.
 
 3) Instructions d'utilisation :
 Accéder à la page d'accueil du site.
