@@ -106,9 +106,7 @@ function validateOrder() {
         return;
     }
 
-    alert("Votre commande a été effectuée avec succès!");
-    localStorage.removeItem("cart");
-    location.reload();
+    document.getElementById("orderPopup").classList.remove("hidden");
 }
 
 
@@ -125,4 +123,43 @@ function clearCart() {
 
     localStorage.removeItem("cart");
     location.reload();
+}
+
+function closePopup() {
+    document.getElementById("orderPopup").classList.add("hidden");
+}
+
+function confirmOrder() {
+
+    const address = document.getElementById("address").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if (!address || !phone) {
+        showPopupMessage("⚠️ Veuillez remplir tous les champs !", "error");
+        return;
+    }
+
+    const phoneRegex = /^(05|06|07)[0-9]{8}$/;
+
+    if (!phoneRegex.test(phone)) {
+        showPopupMessage("⚠️ Numéro invalide (05 / 06 / 07 + 8 chiffres)", "error");
+        return;
+    }
+
+    localStorage.removeItem("cart");
+
+    showPopupMessage("✅ Commande confirmée !", "success");
+
+    setTimeout(() => {
+        closePopup();
+        location.reload();
+    }, 2000);
+}
+
+function showPopupMessage(text, type) {
+    const msg = document.getElementById("popupMessage");
+
+    msg.textContent = text;
+    msg.className = "popup-message " + type;
+    msg.style.display = "block";
 }
