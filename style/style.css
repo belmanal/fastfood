@@ -773,6 +773,11 @@ body {
     gap: 10px;
 }
 
+.cart-item select{
+    padding:5px;
+    border-radius:6px;
+}
+
 .cart-img{
     width: 60px;
     height: 60px;
@@ -833,6 +838,7 @@ body {
 
     animation: pop 0.1s ease;
 }
+
 
 
 .footer {
