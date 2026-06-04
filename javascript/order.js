@@ -4,7 +4,6 @@ function getPrice(selectId) {
     return Number(option.getAttribute("data-price")) || 0;
 }
 
-// ===== TOTAL BOX =====
 function updateBoxTotal() {
     const meatPrice = getPrice("meat");
     const extraPrice = getPrice("extra");
@@ -18,7 +17,6 @@ function updateBoxTotal() {
     }
 }
 
-// ===== INIT LISTENERS =====
 document.addEventListener("DOMContentLoaded", function () {
 
     const meat = document.getElementById("meat");
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCart();
 });
 
-// ===== AJOUT BOX =====
 function addBoxToCart() {
 
     const meat = document.getElementById("meat");
@@ -81,7 +78,6 @@ function addBoxToCart() {
     updateCart();
 }
 
-// ===== UPDATE PANIER =====
 function updateCart() {
 
     const cartItems = document.getElementById("cartItems");
@@ -117,7 +113,7 @@ function updateCart() {
                     <p>${lineTotal} DA</p>
                 </div>
 
-                <button class="btn-order" onclick="removeItem(${index})">×</button>
+                <button class="btn-order" onclick="removeItem(${index})">🗑️</button>
             </div>
         `;
     });
@@ -125,7 +121,6 @@ function updateCart() {
     totalCart.textContent = "Total : " + total + " DA";
 }
 
-// ===== REMOVE =====
 window.removeItem = function (index) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -137,7 +132,6 @@ window.removeItem = function (index) {
     updateCart();
 };
 
-// ===== VALIDATE =====
 function validateOrder() {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -160,7 +154,7 @@ function validateOrder() {
     location.reload();
 }
 
-// ===== CLEAR =====
+
 function clearCart() {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
