@@ -333,8 +333,7 @@ body {
     backdrop-filter: blur(6px);
 }
 
-.cart h2,
-.box-order h2 {
+.cart h2{
     margin: 0 0 18px;
     font-size: 28px;
     color: white;
@@ -839,7 +838,80 @@ body {
     animation: pop 0.1s ease;
 }
 
+.resume-item{
+    display:flex;
+    justify-content:space-between;
+    margin:12px 0;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+}
 
+.resume-item span{
+    color:#ddd;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.resume-item strong{
+    color: #ffd8a8;
+    font-size: 20px;
+}
+
+.btn-commander{
+    background: linear-gradient(45deg, orange, red);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 60px;
+    margin-bottom: 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-commander:hover {
+    transform: scale(1.1);
+}
+
+.btn-vider{
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+    margin-bottom: 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.btn-vider:hover {
+    transform: scale(1.1);
+}
+
+.box-order{
+    max-height: 500px; 
+}
+
+.box-order h2{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
 
 .footer {
     background: #111;
