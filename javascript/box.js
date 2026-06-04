@@ -45,6 +45,7 @@ function createBox() {
     const box = {
         name: `Box (${main.value}, ${side.value}, ${drink.value}, ${dessert.value})`,
         price: total,
+        image: "../image/box.jpg",
         qty: 1
     };
 
