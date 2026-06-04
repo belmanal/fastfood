@@ -2,7 +2,7 @@
 _Meddar Kenza.        Group:4
 _Chetouhi Liticia.    Group:1
 _Belkaid Manal.       Group:5
-_Damen Lamia.         Group:5
+_Damene Lamia.         Group:5
 _Bounsiar Selma.      Group:5
 
 2) Description du site :
