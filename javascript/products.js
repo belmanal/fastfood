@@ -88,13 +88,13 @@ function displayProducts(list) {
                 <img src="${p.image}">
                 <h3>${p.name}</h3>
                 <p>${p.price} DA</p>
-                <button onclick="addToCart('${p.name}', ${p.price})">Ajouter</button>
+                <button onclick="addToCart('${p.name}', ${p.price}, '${p.image}')">Ajouter</button>
             </div>
         `;
     });
 }
 
-function addToCart(name, price) {
+function addToCart(name, price, image) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -103,7 +103,7 @@ function addToCart(name, price) {
     if (index !== -1) {
         cart[index].qty++;
     } else {
-        cart.push({ name, price, qty: 1 });
+        cart.push({ name, price,image, qty: 1 });
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -120,7 +120,7 @@ function showPopup(msg) {
 
     setTimeout(() => {
         popup.style.display = "none";
-    }, 2000);
+    }, 1000);
 }
 
 window.onload = () => {
