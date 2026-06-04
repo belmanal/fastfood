@@ -124,7 +124,7 @@ function updateCart() {
             </select>
 
 
-            <button onclick="removeItem(${index})">🗑️</button>
+            <button class="btn-order" onclick="removeItem(${index})">🗑️</button>
         </div>
     `;
 });
